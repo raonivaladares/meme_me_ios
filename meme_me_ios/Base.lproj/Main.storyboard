@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,13 +13,48 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="meme_me_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CSu-my-gQK">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Pick" id="eCy-S0-xvs">
+                                        <connections>
+                                            <action selector="pickAnImageActionHandler:" destination="BYZ-38-t0r" id="hMW-U8-weP"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Take" id="PKF-rS-ipv">
+                                        <connections>
+                                            <action selector="takeAPictureActionHandler:" destination="BYZ-38-t0r" id="pzG-3A-T6N"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U6f-We-cXF">
+                                <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="0dc-lN-Y5c"/>
+                                    <constraint firstAttribute="width" constant="300" id="mqJ-NC-I5v"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="U6f-We-cXF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JTU-SZ-KAu"/>
+                            <constraint firstItem="CSu-my-gQK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VcL-Co-e04"/>
+                            <constraint firstItem="CSu-my-gQK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="e4d-yK-GYp"/>
+                            <constraint firstItem="CSu-my-gQK" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="g6A-cv-yFz"/>
+                            <constraint firstItem="U6f-We-cXF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jv5-j4-Tc5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="PKF-rS-ipv" id="OWV-I9-w1n"/>
+                        <outlet property="imageView" destination="U6f-We-cXF" id="UOt-J6-pmi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
