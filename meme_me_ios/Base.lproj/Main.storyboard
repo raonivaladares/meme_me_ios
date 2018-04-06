@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,6 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U6f-We-cXF">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CSu-my-gQK">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
@@ -33,27 +37,42 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U6f-We-cXF">
-                                <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="0dc-lN-Y5c"/>
-                                    <constraint firstAttribute="width" constant="300" id="mqJ-NC-I5v"/>
-                                </constraints>
-                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="22N-Ei-3iN">
+                                <rect key="frame" x="32" y="36" width="311" height="48"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Bottom" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FXJ-xx-HyW">
+                                <rect key="frame" x="32" y="559" width="311" height="48"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="U6f-We-cXF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JTU-SZ-KAu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FXJ-xx-HyW" secondAttribute="trailing" constant="32" id="1fM-3i-z61"/>
+                            <constraint firstItem="U6f-We-cXF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DO2-Tw-PJS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U6f-We-cXF" secondAttribute="trailing" id="FaZ-oG-p2q"/>
+                            <constraint firstItem="U6f-We-cXF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Hqy-Uf-CRn"/>
+                            <constraint firstItem="U6f-We-cXF" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Nbw-0S-QMG"/>
+                            <constraint firstItem="FXJ-xx-HyW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="Tca-Vx-hoK"/>
                             <constraint firstItem="CSu-my-gQK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VcL-Co-e04"/>
+                            <constraint firstItem="CSu-my-gQK" firstAttribute="top" secondItem="FXJ-xx-HyW" secondAttribute="bottom" constant="16" id="cub-zx-BBh"/>
                             <constraint firstItem="CSu-my-gQK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="e4d-yK-GYp"/>
                             <constraint firstItem="CSu-my-gQK" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="g6A-cv-yFz"/>
-                            <constraint firstItem="U6f-We-cXF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jv5-j4-Tc5"/>
+                            <constraint firstItem="22N-Ei-3iN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="nMt-Zj-e3w"/>
+                            <constraint firstItem="22N-Ei-3iN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="rBL-Fw-FUY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="22N-Ei-3iN" secondAttribute="trailing" constant="32" id="zTe-6S-LV1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="bottomTextField" destination="FXJ-xx-HyW" id="hBX-rU-bse"/>
                         <outlet property="cameraButton" destination="PKF-rS-ipv" id="OWV-I9-w1n"/>
                         <outlet property="imageView" destination="U6f-We-cXF" id="UOt-J6-pmi"/>
+                        <outlet property="topTextField" destination="22N-Ei-3iN" id="Hhf-c8-1IV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
