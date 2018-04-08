@@ -10,6 +10,7 @@ class ViewController: UIViewController {
 	
 	private let defaultTopText = "TOP"
 	private let defaultBottomText = "BOTTOM"
+	private weak var memeTextFieldDelegate: MemeTextDelegate!
 	
 	enum MemeImageState {
 		case selecting
@@ -28,6 +29,7 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		memeTextFieldDelegate = MemeTextDelegate(defaultTexts: defaultTopText, defaultBottomText)
 		cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
 		setupTextFields()
 		prepareForSeletion()
@@ -42,25 +44,36 @@ class ViewController: UIViewController {
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		
 		NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
 		NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
 	}
 
 	// MARK: - Action handlers
 	@IBAction func shareActionHandler(_ sender: UIBarButtonItem) {
-		guard let imageToShare = imageView.image else {
-			//error alert
+		guard let image = imageView.image else {
+			presentAlertWithError()
 			return
 		}
 		
-		//generate meme image
-		
-		
+		let imageToShare = generateMemedImage()
+
 		let activityViewController = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil)
-		activityViewController.popoverPresentationController?.sourceView = view // change to sender
-		present(activityViewController, animated: true, completion: nil)
+		activityViewController.completionWithItemsHandler =  { [weak self] activity, success, items, error in
+			guard let this = self else { return }
+			
+			if success {
+				let topText = this.topTextField.text ?? ""
+				let bottomText = this.bottomTextField.text ?? ""
+				this.saveMeme(topText: topText, bottomText: bottomText, originalImage: image, memeImage: imageToShare)
+			}
+			
+			activityViewController.completionWithItemsHandler = nil
+		}
 		
-		//intercep result e save
+		activityViewController.popoverPresentationController?.sourceView = view
+		present(activityViewController, animated: true, completion: nil)
 	}
 	
 	@IBAction func cancelActionHandler(_ sender: UIBarButtonItem) {
@@ -110,9 +123,9 @@ class ViewController: UIViewController {
 		]
 		
 		topTextField.defaultTextAttributes = memeTextAttributes
-		topTextField.delegate = self
+		topTextField.delegate = memeTextFieldDelegate
 		bottomTextField.defaultTextAttributes = memeTextAttributes
-		bottomTextField.delegate = self
+		bottomTextField.delegate = memeTextFieldDelegate
 		
 		topTextField.textAlignment = .center
 		bottomTextField.textAlignment = .center
@@ -129,8 +142,25 @@ class ViewController: UIViewController {
 		shareButton.isEnabled = false
 	}
 	
-	private func saveMeme() {
-		print("saved")
+	private func saveMeme(topText: String, bottomText: String, originalImage: UIImage, memeImage: UIImage) {
+		let _ = Meme(topText: topText, bottomText: bottomText, originalImage: originalImage, memeImage: memeImage)
+	}
+	
+	func generateMemedImage() -> UIImage {
+		UIGraphicsBeginImageContext(view.frame.size)
+		view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
+		
+		let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+		UIGraphicsEndImageContext()
+		
+		return memedImage
+	}
+	
+	private func presentAlertWithError() {
+		let alert = UIAlertController(title: "Ops...", message: "Something went wrong!", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+		
+		present(alert, animated: true, completion: nil)
 	}
 }
 
@@ -138,35 +168,11 @@ class ViewController: UIViewController {
 extension ViewController: UINavigationControllerDelegate {}
 
 extension ViewController: UIImagePickerControllerDelegate {
-	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
 		if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
 			imageView.image = image
 			memeImageState = .selected
 		}
 		dismiss(animated: true, completion: nil)
 	}
-}
-
-extension ViewController: UITextFieldDelegate {
-	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-		if let text = textField.text,
-			text == defaultTopText || text == defaultBottomText {
-				textField.text = nil
-		}
-		
-		return true
-	}
-	
-	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		textField.resignFirstResponder()
-		
-		return true
-	}
-}
-
-struct Meme {
-	let topText: String
-	let bottomText: String
-	let originalImage: UIImage
-	let memeImage: UIImage
 }
