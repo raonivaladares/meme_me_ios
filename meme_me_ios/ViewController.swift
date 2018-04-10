@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
+class MemeGeneratorViewController: UIViewController {
 	@IBOutlet private weak var shareButton: UIBarButtonItem!
 	@IBOutlet private weak var cancelButton: UIBarButtonItem!
 	@IBOutlet private weak var imageView: UIImageView!
@@ -161,7 +161,7 @@ class ViewController: UIViewController {
 	}
 	
 	private func presentAlertWithError() {
-		let alert = UIAlertController(title: "Ops...", message: "Something went wrong!", preferredStyle: .alert)
+		let alert = UIAlertController(title: "Ops...", message: "Something is wrong!", preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
 		
 		present(alert, animated: true, completion: nil)
@@ -169,9 +169,9 @@ class ViewController: UIViewController {
 }
 
 // MARK: - Extensions
-extension ViewController: UINavigationControllerDelegate {}
+extension MemeGeneratorViewController: UINavigationControllerDelegate {}
 
-extension ViewController: UIImagePickerControllerDelegate {
+extension MemeGeneratorViewController: UIImagePickerControllerDelegate {
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
 		if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
 			imageView.image = image

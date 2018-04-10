@@ -103,12 +103,12 @@
 			children = (
 				D1C39578207433ED00E7802C /* AppDelegate.swift */,
 				D1C3957A207433ED00E7802C /* ViewController.swift */,
+				D13F845E2079986B0009609B /* MemeTextFieldDelegate.swift */,
+				D13F845C207991600009609B /* Meme.swift */,
 				D1C3957C207433ED00E7802C /* Main.storyboard */,
 				D1C3957F207433ED00E7802C /* Assets.xcassets */,
 				D1C39581207433ED00E7802C /* LaunchScreen.storyboard */,
 				D1C39584207433ED00E7802C /* Info.plist */,
-				D13F845C207991600009609B /* Meme.swift */,
-				D13F845E2079986B0009609B /* MemeTextFieldDelegate.swift */,
 			);
 			path = meme_me_ios;
 			sourceTree = "<group>";
