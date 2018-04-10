@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U6f-We-cXF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U6f-We-cXF">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
@@ -41,13 +41,13 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FXJ-xx-HyW">
-                                <rect key="frame" x="32" y="559" width="311" height="48"/>
+                                <rect key="frame" x="32" y="543" width="311" height="48"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="22N-Ei-3iN">
-                                <rect key="frame" x="32" y="80" width="311" height="48"/>
+                                <rect key="frame" x="32" y="96" width="311" height="48"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -60,11 +60,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U6f-We-cXF" secondAttribute="trailing" id="FaZ-oG-p2q"/>
                             <constraint firstItem="FXJ-xx-HyW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="Tca-Vx-hoK"/>
                             <constraint firstItem="CSu-my-gQK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VcL-Co-e04"/>
-                            <constraint firstItem="CSu-my-gQK" firstAttribute="top" secondItem="FXJ-xx-HyW" secondAttribute="bottom" constant="16" id="cub-zx-BBh"/>
+                            <constraint firstItem="CSu-my-gQK" firstAttribute="top" secondItem="FXJ-xx-HyW" secondAttribute="bottom" constant="32" id="cub-zx-BBh"/>
                             <constraint firstItem="CSu-my-gQK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="e4d-yK-GYp"/>
                             <constraint firstItem="CSu-my-gQK" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="g6A-cv-yFz"/>
                             <constraint firstItem="U6f-We-cXF" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="h3n-Cg-NdF"/>
-                            <constraint firstItem="22N-Ei-3iN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="n3L-uK-g2p"/>
+                            <constraint firstItem="22N-Ei-3iN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="n3L-uK-g2p"/>
                             <constraint firstItem="22N-Ei-3iN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="rBL-Fw-FUY"/>
                             <constraint firstItem="U6f-We-cXF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="usK-fJ-IyG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="22N-Ei-3iN" secondAttribute="trailing" constant="32" id="zTe-6S-LV1"/>

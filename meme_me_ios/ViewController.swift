@@ -10,7 +10,7 @@ class ViewController: UIViewController {
 	
 	private let defaultTopText = "TOP"
 	private let defaultBottomText = "BOTTOM"
-	private weak var memeTextFieldDelegate: MemeTextDelegate!
+	private var memeTextFieldDelegate: MemeTextDelegate!
 	
 	enum MemeImageState {
 		case selecting
@@ -26,6 +26,7 @@ class ViewController: UIViewController {
 		}
 	}
 	
+	// MARK: - View life-cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -35,7 +36,6 @@ class ViewController: UIViewController {
 		prepareForSeletion()
 	}
 	
-	// MARK: - View life-cycle
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		
@@ -64,9 +64,7 @@ class ViewController: UIViewController {
 			guard let this = self else { return }
 			
 			if success {
-				let topText = this.topTextField.text ?? ""
-				let bottomText = this.bottomTextField.text ?? ""
-				this.saveMeme(topText: topText, bottomText: bottomText, originalImage: image, memeImage: imageToShare)
+				this.prepareForSavingMeme(originalImage: image, memeImage: imageToShare)
 			}
 			
 			activityViewController.completionWithItemsHandler = nil
@@ -115,22 +113,22 @@ class ViewController: UIViewController {
 	}
 	
 	private func setupTextFields() {
-		let memeTextAttributes:[String: Any] = [
+		func setupTextField(textField: UITextField, defaultTextAttributes: [String: Any]) {
+			textField.defaultTextAttributes = defaultTextAttributes
+			textField.textAlignment = .center
+			textField.delegate = memeTextFieldDelegate
+		}
+		
+		let memeTextAttributes: [String: Any] = [
 			NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
 			NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
 			NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
 			NSAttributedStringKey.strokeWidth.rawValue: -3
 		]
 		
-		topTextField.defaultTextAttributes = memeTextAttributes
-		topTextField.delegate = memeTextFieldDelegate
-		bottomTextField.defaultTextAttributes = memeTextAttributes
-		bottomTextField.delegate = memeTextFieldDelegate
-		
-		topTextField.textAlignment = .center
-		bottomTextField.textAlignment = .center
+		setupTextField(textField: topTextField, defaultTextAttributes: memeTextAttributes)
+		setupTextField(textField: bottomTextField, defaultTextAttributes: memeTextAttributes)
 	}
-	
 	
 	private func prepareForSeletion() {
 		imageView.image = nil
@@ -154,6 +152,12 @@ class ViewController: UIViewController {
 		UIGraphicsEndImageContext()
 		
 		return memedImage
+	}
+	
+	private func prepareForSavingMeme(originalImage: UIImage, memeImage: UIImage) {
+		let topText = topTextField.text ?? ""
+		let bottomText = bottomTextField.text ?? ""
+		saveMeme(topText: topText, bottomText: bottomText, originalImage: originalImage, memeImage: memeImage)
 	}
 	
 	private func presentAlertWithError() {
