@@ -64,7 +64,9 @@ class MemeGeneratorViewController: UIViewController {
 			guard let this = self else { return }
 			
 			if success {
-				this.prepareForSavingMeme(originalImage: image, memeImage: imageToShare)
+				let memeModel = this.gereneteMemeModel(originalImage: image, memeImage: imageToShare)
+				RepositoryMeme.save(model: memeModel)
+				this.navigationController?.popViewController(animated: true)
 			}
 			
 			activityViewController.completionWithItemsHandler = nil
@@ -76,19 +78,16 @@ class MemeGeneratorViewController: UIViewController {
 	
 	@IBAction func cancelActionHandler(_ sender: UIBarButtonItem) {
 		memeImageState = .selecting
+		navigationController?.popViewController(animated: true)
 	}
 	
 	@IBAction func pickAnImageActionHandler(_ sender: UIBarButtonItem) {
-		let pickerController = UIImagePickerController()
-		pickerController.delegate = self
-		pickerController.sourceType = .photoLibrary
+		let pickerController = generatePickerController(sourceType: .photoLibrary)
 		present(pickerController, animated: true, completion: nil)
 	}
 	
 	@IBAction func takeAPictureActionHandler(_ sender: Any) {
-		let pickerController = UIImagePickerController()
-		pickerController.delegate = self
-		pickerController.sourceType = .camera
+		let pickerController = generatePickerController(sourceType: .camera)
 		present(pickerController, animated: true, completion: nil)
 	}
 	
@@ -140,10 +139,6 @@ class MemeGeneratorViewController: UIViewController {
 		shareButton.isEnabled = false
 	}
 	
-	private func saveMeme(topText: String, bottomText: String, originalImage: UIImage, memeImage: UIImage) {
-		let _ = Meme(topText: topText, bottomText: bottomText, originalImage: originalImage, memeImage: memeImage)
-	}
-	
 	func generateMemedImage() -> UIImage {
 		UIGraphicsBeginImageContext(view.frame.size)
 		view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
@@ -154,10 +149,10 @@ class MemeGeneratorViewController: UIViewController {
 		return memedImage
 	}
 	
-	private func prepareForSavingMeme(originalImage: UIImage, memeImage: UIImage) {
+	private func gereneteMemeModel(originalImage: UIImage, memeImage: UIImage) -> Meme {
 		let topText = topTextField.text ?? ""
 		let bottomText = bottomTextField.text ?? ""
-		saveMeme(topText: topText, bottomText: bottomText, originalImage: originalImage, memeImage: memeImage)
+		return Meme(topText: topText, bottomText: bottomText, originalImage: originalImage, memeImage: memeImage)
 	}
 	
 	private func presentAlertWithError() {
@@ -165,6 +160,13 @@ class MemeGeneratorViewController: UIViewController {
 		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
 		
 		present(alert, animated: true, completion: nil)
+	}
+	
+	private func generatePickerController(sourceType: UIImagePickerControllerSourceType) -> UIImagePickerController {
+		let pickerController = UIImagePickerController()
+		pickerController.delegate = self
+		pickerController.sourceType = sourceType
+		return pickerController
 	}
 }
 
