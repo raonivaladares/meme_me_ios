@@ -1,7 +1,7 @@
 import Foundation
 
-final class RepositoryMeme {
-	static let sharedInstance = RepositoryMeme()
+final class MemeRepository {
+	static let sharedInstance = MemeRepository()
 	static private(set) var memes: [Meme] = []
 	
 	// MARK: - Inits

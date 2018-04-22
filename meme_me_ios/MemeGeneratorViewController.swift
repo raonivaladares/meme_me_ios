@@ -65,7 +65,7 @@ class MemeGeneratorViewController: UIViewController {
 			
 			if success {
 				let memeModel = this.gereneteMemeModel(originalImage: image, memeImage: imageToShare)
-				RepositoryMeme.save(model: memeModel)
+				MemeRepository.save(model: memeModel)
 				this.navigationController?.popViewController(animated: true)
 			}
 			
