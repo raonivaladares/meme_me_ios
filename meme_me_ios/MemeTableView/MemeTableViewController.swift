@@ -5,6 +5,7 @@ class MemeTableViewController: UIViewController {
 	
 	private var memes: [Meme]!
 	
+	// MARK: - View lify-cicle
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -18,9 +19,22 @@ class MemeTableViewController: UIViewController {
 		tableView.reloadData()
 	}
 	
+	// MARK: - Segues
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let viewController = segue.destination as? MemeDetailsViewController,
+			 let meme = sender as? Meme {
+			viewController.meme = meme
+		}
+	}
 }
 
+// MARK: - Extensions
 extension MemeTableViewController: UITableViewDelegate {
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let meme = memes[indexPath.row]
+		performSegue(withIdentifier: "tableToDetailsSegue", sender: meme)
+	}
+	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: MemeTableViewCell.reuseIdentifier, for: indexPath) as! MemeTableViewCell
 		let meme = memes[indexPath.row]
@@ -45,26 +59,5 @@ extension MemeTableViewController: UITableViewDelegate {
 extension MemeTableViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return memes.count
-	}
-}
-
-class MemeTableViewCell: UITableViewCell {
-
-	@IBOutlet private weak var memeImage: UIImageView!
-	@IBOutlet private weak var memeDescription: UILabel!
-	
-	func populate(image: UIImage, description: String) {
-		memeImage.image = image
-		memeDescription.text = description
-	}
-}
-
-extension MemeTableViewCell: ReusableView {}
-
-protocol ReusableView: class {}
-
-extension ReusableView where Self: UIView {
-	static var reuseIdentifier: String {
-		return String(describing: self)
 	}
 }
