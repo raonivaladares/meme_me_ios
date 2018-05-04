@@ -37,7 +37,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cEj-eD-9dx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="129"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -182,11 +182,11 @@
             </objects>
             <point key="canvasLocation" x="3364" y="-8"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Sent Memes-->
         <scene sceneID="ZeA-xG-ieV">
             <objects>
                 <tabBarController id="ILg-r6-PPV" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="fVI-PP-8Eo">
+                    <navigationItem key="navigationItem" title="Sent Memes" id="fVI-PP-8Eo">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="eyN-f4-YxW">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="show" id="kjt-gd-d7s"/>
@@ -318,6 +318,6 @@
         <image name="icon_table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lXj-Hc-3cT"/>
+        <segue reference="luS-VH-gBp"/>
     </inferredMetricsTieBreakers>
 </document>

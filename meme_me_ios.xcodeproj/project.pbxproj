@@ -95,6 +95,7 @@
 		D17CB40A208D0B92006BE173 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				D13F845E2079986B0009609B /* MemeTextFieldDelegate.swift */,
 				D18BE9C72088004C00159CA3 /* RepositoryMeme.swift */,
 			);
 			path = Util;
@@ -149,19 +150,18 @@
 		D1C39577207433ED00E7802C /* meme_me_ios */ = {
 			isa = PBXGroup;
 			children = (
-				D17CB411208D2EB5006BE173 /* MemeColletionView */,
-				D17CB410208D2DE8006BE173 /* Protocols */,
-				D17CB40B208D2D5B006BE173 /* MemeTableView */,
 				D17CB40A208D0B92006BE173 /* Util */,
+				D17CB410208D2DE8006BE173 /* Protocols */,
+				D17CB411208D2EB5006BE173 /* MemeColletionView */,
+				D17CB40B208D2D5B006BE173 /* MemeTableView */,
+				D17CB408208CD774006BE173 /* MemeDetailsViewController.swift */,
 				D1C39578207433ED00E7802C /* AppDelegate.swift */,
 				D1C3957A207433ED00E7802C /* MemeGeneratorViewController.swift */,
-				D13F845E2079986B0009609B /* MemeTextFieldDelegate.swift */,
 				D13F845C207991600009609B /* Meme.swift */,
 				D1C3957C207433ED00E7802C /* Main.storyboard */,
 				D1C3957F207433ED00E7802C /* Assets.xcassets */,
 				D1C39581207433ED00E7802C /* LaunchScreen.storyboard */,
 				D1C39584207433ED00E7802C /* Info.plist */,
-				D17CB408208CD774006BE173 /* MemeDetailsViewController.swift */,
 			);
 			path = meme_me_ios;
 			sourceTree = "<group>";

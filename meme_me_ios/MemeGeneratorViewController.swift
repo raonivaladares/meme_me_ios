@@ -7,8 +7,8 @@ class MemeGeneratorViewController: UIViewController {
 	@IBOutlet private weak var topTextField: UITextField!
 	@IBOutlet private weak var bottomTextField: UITextField!
 	@IBOutlet private weak var cameraButton: UIBarButtonItem!
+	@IBOutlet private weak var toolBar: UIToolbar!
 	
-	@IBOutlet weak var toolBar: UIToolbar!
 	private let defaultTopText = "TOP"
 	private let defaultBottomText = "BOTTOM"
 	private var memeTextFieldDelegate: MemeTextDelegate!
