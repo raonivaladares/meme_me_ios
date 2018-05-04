@@ -8,6 +8,7 @@ class MemeGeneratorViewController: UIViewController {
 	@IBOutlet private weak var bottomTextField: UITextField!
 	@IBOutlet private weak var cameraButton: UIBarButtonItem!
 	
+	@IBOutlet weak var toolBar: UIToolbar!
 	private let defaultTopText = "TOP"
 	private let defaultBottomText = "BOTTOM"
 	private var memeTextFieldDelegate: MemeTextDelegate!
@@ -141,7 +142,10 @@ class MemeGeneratorViewController: UIViewController {
 	
 	func generateMemedImage() -> UIImage {
 		UIGraphicsBeginImageContext(view.frame.size)
+		
+		toolBar.isHidden = true
 		view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
+		toolBar.isHidden = false
 		
 		let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
 		UIGraphicsEndImageContext()

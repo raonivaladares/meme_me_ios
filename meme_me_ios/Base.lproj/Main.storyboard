@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Meme Colletion View Controller-->
         <scene sceneID="UT0-eH-rLv">
             <objects>
                 <viewController id="3Ns-B4-fxR" customClass="MemeColletionViewController" customModule="meme_me_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,7 +37,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cEj-eD-9dx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="129"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -58,7 +58,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="c6c-Ar-dll" firstAttribute="trailing" secondItem="0PU-MV-QpX" secondAttribute="trailing" id="A8n-Co-HQs"/>
                             <constraint firstItem="0PU-MV-QpX" firstAttribute="leading" secondItem="c6c-Ar-dll" secondAttribute="leading" id="IeA-q2-6d9"/>
@@ -67,7 +67,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="c6c-Ar-dll"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="2kr-yW-i89"/>
+                    <tabBarItem key="tabBarItem" title="" image="icon_collection" id="2kr-yW-i89">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="colletionView" destination="0PU-MV-QpX" id="eLM-cs-Gzq"/>
                         <segue destination="Pbb-e2-1Qb" kind="show" identifier="collectionToDetailsSegue" id="lXj-Hc-3cT"/>
@@ -77,7 +79,7 @@
             </objects>
             <point key="canvasLocation" x="2376.8000000000002" y="444.82758620689657"/>
         </scene>
-        <!--Item 1-->
+        <!--Meme Table View Controller-->
         <scene sceneID="PHk-2B-3eN">
             <objects>
                 <viewController id="y6g-QX-jg3" customClass="MemeTableViewController" customModule="meme_me_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -130,6 +132,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nQi-d0-B9F" firstAttribute="trailing" secondItem="v6z-rI-lzH" secondAttribute="trailing" id="Tsa-Ij-3rq"/>
                             <constraint firstItem="nQi-d0-B9F" firstAttribute="bottom" secondItem="v6z-rI-lzH" secondAttribute="bottom" id="aWT-pe-0Mh"/>
@@ -138,7 +141,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nQi-d0-B9F"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="kRi-XH-fWh"/>
+                    <tabBarItem key="tabBarItem" title="" image="icon_table" id="kRi-XH-fWh">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="tableView" destination="v6z-rI-lzH" id="XnA-X2-Upe"/>
                         <segue destination="Pbb-e2-1Qb" kind="show" identifier="tableToDetailsSegue" id="luS-VH-gBp"/>
@@ -160,7 +165,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bQs-Ym-lu6" firstAttribute="leading" secondItem="WA9-B3-ZLX" secondAttribute="leading" id="09T-dW-voh"/>
                             <constraint firstItem="WA9-B3-ZLX" firstAttribute="trailing" secondItem="bQs-Ym-lu6" secondAttribute="trailing" id="Cie-wK-xe0"/>
@@ -281,6 +286,7 @@
                         <outlet property="cancelButton" destination="w9Y-ab-pZU" id="HL8-4Y-o5x"/>
                         <outlet property="imageView" destination="U6f-We-cXF" id="UOt-J6-pmi"/>
                         <outlet property="shareButton" destination="h1t-rE-yq7" id="1FE-EL-p5W"/>
+                        <outlet property="toolBar" destination="CSu-my-gQK" id="YRO-I9-dF4"/>
                         <outlet property="topTextField" destination="22N-Ei-3iN" id="Hhf-c8-1IV"/>
                     </connections>
                 </viewController>
@@ -307,7 +313,11 @@
             <point key="canvasLocation" x="32.799999999999997" y="33.733133433283363"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_collection" width="30" height="30"/>
+        <image name="icon_table" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="luS-VH-gBp"/>
+        <segue reference="lXj-Hc-3cT"/>
     </inferredMetricsTieBreakers>
 </document>
